@@ -1,0 +1,53 @@
+<html>
+  <head>
+    <title>Prototyping</title>
+    <meta charset="utf8mb4"
+   <link rel="stylesheet" type="text/css" href="/static/style.css">
+  </head>
+  <body>
+
+    <div id="container">
+
+      <div class="pagetitle">
+        <h1>Covid-or-not</h1>
+      </div>
+
+      <div>
+
+          <!-- Enter text to process -->
+        <form id="process", method="post" action="{{ url_for('experiment_done') }}">
+          <label>Run a classification experiment:</label><br />
+          <p>This experiment trains a RandomForestClassifier to predict whether a post is about covid or not.</p>
+          <p>Please choose your parameters below:</p>
+          <label for="max_depth">Maximum Tree Depth: </label>
+          <input type="number" min="5" step="5" name="max_depth" id="max_depth" value="50" required><br>
+
+          <label for="n_estimators">Number of Trees: </label>
+          <input type="number" min="1" step="1" name="n_estimators" id="n_estimators" value="10" required><br>
+
+          <label for="max_features">Maximum Number of Features: </label>
+          <input type="number" min="10" step="10" name="max_features" id="max_features" value="50" required><br>
+
+          <input type ="submit" name="action" value="Run!">
+        </form>
+
+          </br>
+          </br>
+
+        <form id="process", method="post" action="{{ url_for('retrieve_results') }}">
+          <label for="retrieve_results">Retrieve information on all experiments conducted so far:</label><br />
+          <input type ="submit" name="action" value="Retrieve!">
+        </form>
+
+          </br>
+          </br>
+
+        <form id="process", method="post" action="{{ url_for('submitted_form') }}">
+          <label for="input_text">Implement a 'covid-or-not' predictor:</label> <input type="text" name="input_text"><br />
+          <input type ="submit" name="action" value="Covid-or-not?">
+        </form>
+
+      </div>
+    </div>
+  </body>
+</html>
